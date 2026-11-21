@@ -23,6 +23,7 @@ export default function LoginPage() {
     try {
       const result = await fetch(`${API_URL}/auth/google`, {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ credential: response.credential }),
       });
