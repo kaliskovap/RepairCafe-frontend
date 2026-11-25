@@ -1,5 +1,5 @@
 /* Repair Café – převod vizuálního systému z finálního dema do produkčního FE.
-   Neobsahuje demonstrační stav ani demonstrační data. */
+   Obsahuje pouze sdílené styly aplikace. */
 :root {
   font-family: Inter, Arial, sans-serif;
   color: #202923;
@@ -19,7 +19,7 @@ html { scroll-behavior: smooth; }
 body { min-width: 320px; background: #e9ece8; color: #202923; }
 button,input,select,textarea { font: inherit; }
 
-/* Common shell and navigation – same green bar and proportions as the demo. */
+/* Common application shell and navigation. */
 .landing-header,.browse-header,.admin-users-header,.form-header {
   min-height: 66px; height: 66px; background: var(--green); color: #fff;
   display:flex; align-items:center; justify-content:space-between; gap:20px;
@@ -71,7 +71,7 @@ button,input,select,textarea { font: inherit; }
 }
 .field input:focus,.field select:focus,.field textarea:focus,.browse-search:focus-within,.admin-users-search:focus-within { border-color:#789777; box-shadow:0 0 0 3px #dce8d277; }
 
-/* Request listing: demo's warm paper cards, photo header and compact metadata. */
+/* Request listing: warm paper cards, photo header and compact metadata. */
 .browse-stats,.my-repairs-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:0 0 20px; }
 .browse-stats>div,.my-repairs-stats>div { background:#f0eadf; border-radius:11px; padding:15px 18px; display:grid; gap:4px; }
 .browse-stats strong,.my-repairs-stats strong { color:#174632; font-size:21px; }
@@ -165,7 +165,7 @@ button,input,select,textarea { font: inherit; }
 .admin-user-identity { display:flex; align-items:center; gap:10px; }
 .admin-user-identity img { width:32px; height:32px; border-radius:50%; object-fit:cover; }
 
-/* Landing page uses the same exact imagery and palette as the demo. */
+/* Landing page visual styling and local imagery. */
 .landing-refreshed { background:var(--cream); }
 .refreshed-hero { min-height:560px; height:560px; padding:0 clamp(24px,7vw,110px); background-position:center; background-size:cover; }
 .refreshed-hero .hero-copy { max-width:650px; }
