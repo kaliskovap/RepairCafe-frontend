@@ -6,6 +6,7 @@ import { AuthProvider } from './auth/AuthContext.jsx';
 import App from './app/App.jsx';
 import './styles.css';
 import './design-system.css';
+import './demo-visual.css';
 
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'YOUR_GOOGLE_CLIENT_ID';
 

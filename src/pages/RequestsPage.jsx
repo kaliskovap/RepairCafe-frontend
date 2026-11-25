@@ -48,121 +48,49 @@ export default function RequestsPage() {
     <div className="browse-page">
       <header className="browse-header">
         <Link className="brand" to="/">
-          <span className="brand-mark">
-            <Wrench />
-          </span>
+          <span className="brand-mark" aria-hidden="true" />
           <b>Repair Café</b>
         </Link>
         <nav>
-          <Link to="/">Úvodní stránka</Link>
+          <Link to="/">O nás</Link>
           <Link to="/requests/new">Vytvořit požadavek</Link>
-          <Link className="button button-light" to="/login">
-            Přihlásit se
-          </Link>
+          <Link className="button button-light" to="/login">Přihlásit se</Link>
         </nav>
       </header>
-      <main className="browse-content">
-        <div className="browse-title">
-          <div>
-            <span className="eyebrow">POMOC, KTERÁ MÁ SMYSL</span>
-            <h1>Požadavky na opravu</h1>
-            <p>Prohlédněte si věci, kterým můžete společně s jejich majiteli dát druhou šanci.</p>
-          </div>
-          <Link className="button button-primary" to="/requests/new">
-            <Plus size={18} /> Přidat požadavek
-          </Link>
+      <main className="page-area">
+        <div className="browse-layout">
+          <aside className="filters">
+            <b>Vyhledávání</b>
+            <label className="searchbox"><Search /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Hledat požadavky…" /></label>
+            <hr />
+            <b>Kategorie</b>
+            <div className="filter-options">
+              {categories.map((item, index) => {
+                const Icon = icons[sampleRequests.find((x) => x.category === item)?.icon] || Wrench;
+                return <button key={item} className={category === item ? 'chosen' : ''} onClick={() => setCategory(item)}><span>{index === 0 ? <SlidersHorizontal /> : <Icon />}</span>{item}</button>;
+              })}
+            </div>
+            <hr />
+            <b>Řazení</b>
+            <label className="sort">Zobrazit <select value={sort} onChange={(e) => setSort(e.target.value)}><option value="newest">Nejnovější</option><option value="title">Podle názvu</option></select></label>
+          </aside>
+          <section className="results">
+            <div className="results-head">
+              <div><span className="eyebrow">POMOC, KTERÁ MÁ SMYSL</span><h1>Dostupné opravy</h1><p>Najděte něco, s čím můžete pomoci.</p></div>
+              <Link className="btn-primary" to="/requests/new"><Plus /> Vytvořit požadavek</Link>
+            </div>
+            <div className="request-grid">
+              {filtered.length ? filtered.map((item) => {
+                const Icon = icons[item.icon] || Wrench;
+                return <article className="request-card" key={item.id}>
+                  <div className="photo-wrap"><img src={requestPhotos[item.id]} alt={item.title} loading="lazy" /><span className="open-badge">{item.status}</span></div>
+                  <div className="card-content"><span className="category-chip"><Icon />{item.category}</span><h3>{item.title}</h3><p>{item.description}</p><div className="card-meta"><span>{item.date}</span><span>{item.requester}</span></div><Link className="btn-primary card-button" to={`/requests/${item.id}`}>Zobrazit detail <ArrowRight /></Link></div>
+                </article>;
+              }) : <div className="empty-state"><Search /><h3>Žádné požadavky nenalezeny</h3><p>Zkuste změnit kategorii nebo hledaný výraz.</p></div>}
+            </div>
+            <p className="prototype-note">Ukázková data: požadavky jsou v této fázi načteny z lokálního souboru. Napojení na databázi doplníme po rozšíření backendového API.</p>
+          </section>
         </div>
-        <div className="browse-stats">
-          <div>
-            <strong>{sampleRequests.length}</strong>
-            <span>otevřených požadavků</span>
-          </div>
-          <div>
-            <strong>6</strong>
-            <span>kategorií oprav</span>
-          </div>
-          <div>
-            <strong>Společně</strong>
-            <span>dokážeme více</span>
-          </div>
-        </div>
-        <div className="browse-tools">
-          <label className="browse-search">
-            <Search size={19} />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Hledat podle názvu nebo popisu…"
-            />
-          </label>
-          <label className="browse-filter">
-            <SlidersHorizontal size={17} />
-            <select value={category} onChange={(e) => setCategory(e.target.value)}>
-              {categories.map((x) => (
-                <option key={x}>{x}</option>
-              ))}
-            </select>
-          </label>
-          <label className="browse-sort">
-            <span>Řadit:</span>
-            <select value={sort} onChange={(e) => setSort(e.target.value)}>
-              <option value="newest">Nejnovější</option>
-              <option value="title">Podle názvu</option>
-            </select>
-          </label>
-        </div>
-        <div className="browse-result-count">
-          Zobrazeno {filtered.length} z {sampleRequests.length} požadavků
-        </div>
-        {filtered.length ? (
-          <div className="request-cards">
-            {filtered.map((item) => {
-              const Icon = icons[item.icon] || Wrench;
-              return (
-                <article className="request-card" key={item.id}>
-                  <div className="request-card-photo">
-                    <img src={requestPhotos[item.id]} alt={item.title} loading="lazy" />
-                  </div>
-                  <div className="request-card-body">
-                    <div className="request-card-meta">
-                      <span className="category-label">{item.category}</span>
-                      <span className="status status-open">{item.status}</span>
-                    </div>
-                    <h2>{item.title}</h2>
-                    <p>{item.description}</p>
-                    <div className="request-card-footer">
-                      <span>
-                        {item.requester} · {item.date}
-                      </span>
-                      <Link to={`/requests/${item.id}`}>
-                        Zobrazit detail <ArrowRight size={16} />
-                      </Link>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="empty-results">
-            <Search size={30} />
-            <h2>Žádné požadavky nenalezeny</h2>
-            <p>Zkuste upravit hledaný výraz nebo vybranou kategorii.</p>
-            <button
-              className="button button-secondary"
-              onClick={() => {
-                setQuery('');
-                setCategory(categories[0]);
-              }}
-            >
-              Zrušit filtry
-            </button>
-          </div>
-        )}
-        <p className="prototype-note">
-          Ukázková data: požadavky jsou v této fázi načteny z lokálního souboru. Napojení na
-          databázi doplníme po rozšíření backendového API.
-        </p>
       </main>
       <footer className="request-footer">Repair Café · Komunitní opravy</footer>
     </div>
