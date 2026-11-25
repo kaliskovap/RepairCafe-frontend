@@ -1330,7 +1330,7 @@ select {
   font-size: 13px;
 }
 
-/* Visual refresh aligned with the approved Repair Café demo */
+/* Sjednocený vizuální systém aplikace Repair Café */
 .landing-refreshed .refreshed-hero {
   min-height: 610px;
   background-size: cover;
@@ -2475,91 +2475,4 @@ select {
   .admin-users-header .brand {
     font-size: 19px;
   }
-}
-
-/* S15 – přesné vizuální přiblížení schválenému demo prototypu */
-:root { font-family: Inter, Arial, sans-serif; color: #202923; background: #e9ece8; }
-body { background: #e9ece8; }
-.demo-landing { min-height: 100vh; background: #f8f4ec; color: #202923; }
-.demo-landing-header { height: 66px; background: #003b2a; display:flex; align-items:center; padding:0 26px; gap:22px; color:#fff; }
-.demo-landing-brand { display:flex; align-items:center; flex:0 0 auto; width:190px; height:48px; }
-.demo-landing-brand img { width:190px; height:48px; object-fit:contain; object-position:left center; }
-.demo-landing-divider { height:28px; border-left:1px solid #ffffff45; }
-.demo-landing-about { color:#e4eee8; font-size:13px; text-decoration:none; }
-.demo-landing-login { margin-left:auto; display:inline-flex; align-items:center; gap:8px; background:#eaf0e6; color:#003b2a; border-radius:7px; padding:10px 15px; font-size:12px; font-weight:700; text-decoration:none; }
-.demo-landing-hero { height:500px; position:relative; overflow:hidden; display:flex; align-items:center; background:#17241e; }
-.demo-landing-hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 48%; }
-.demo-landing-hero-overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(0,35,24,.82),rgba(0,35,24,.16)); }
-.demo-landing-hero-copy { position:relative; z-index:1; width:min(100%,1440px); margin:0 auto; padding:35px 7%; color:#fff; }
-.demo-landing-hero-copy h1 { max-width:700px; font-size:clamp(38px,4.5vw,62px); line-height:1.06; letter-spacing:-1.5px; margin:0 0 17px; }
-.demo-landing-hero-copy p { font-size:17px; line-height:1.55; margin:0; color:#f0f3ed; }
-.demo-landing-actions { display:flex; align-items:center; gap:24px; margin-top:27px; }
-.demo-landing-primary { min-height:44px; padding:0 18px; border-radius:8px; background:#e4f3b4; color:#203522; display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:750; text-decoration:none; }
-.demo-landing-secondary { display:inline-flex; align-items:center; gap:8px; color:#fff; font-size:13px; font-weight:600; text-decoration:none; }
-.demo-landing-how { padding:34px 26px; background:#f8f4ec; }
-.demo-landing-how img { display:block; width:min(100%,1440px); height:auto; margin:auto; }
-.demo-landing-cards { max-width:1440px; margin:0 auto; padding:18px 26px 46px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
-.demo-landing-card { display:grid; grid-template-columns:42% 1fr; min-height:220px; background:#fffdfa; border:1px solid #e7e0d5; border-radius:12px; overflow:hidden; }
-.demo-landing-card>img { width:100%; height:100%; min-height:220px; object-fit:cover; }
-.demo-landing-card>div { padding:22px 21px; display:flex; flex-direction:column; align-items:flex-start; }
-.demo-landing-card h2 { display:flex; align-items:center; gap:9px; color:#174632; font-size:18px; margin:0 0 10px; }
-.demo-landing-card p { color:#68736b; font-size:12px; line-height:1.55; margin:0 0 16px; }
-.demo-landing-card a { margin-top:auto; display:inline-flex; align-items:center; gap:7px; color:#075039; font-size:12px; font-weight:750; text-decoration:none; }
-.demo-landing-bottom img { display:block; width:100%; height:auto; }
-
-/* Demo uses a compact, centered work area and warm paper surfaces. */
-.browse-page,.request-page { background:#e9ece8; color:#202923; }
-.browse-header,.form-header { height:66px; background:#003b2a; color:#fff; padding:0 max(26px,calc((100vw - 1440px)/2)); }
-.browse-header .brand,.form-header .brand { color:#fff; gap:9px; }
-.browse-header .brand-mark,.form-header .brand-mark { width:32px; height:32px; border-radius:8px; background:#e8eee2; color:#003b2a; }
-.browse-header nav { gap:8px; font-size:13px; }
-.browse-header nav a:not(.button) { color:#e4eee8; padding:10px 13px; border-radius:8px; }
-.browse-header nav a:not(.button):hover { background:#18745a; color:#fff; }
-.browse-content,.request-content { max-width:1440px; padding:30px 34px 54px; }
-.browse-title h1,.request-heading h1 { color:#174632; font-size:27px; line-height:1.2; letter-spacing:-.8px; }
-.browse-title p,.request-heading p { color:#68736b; font-size:14px; }
-.browse-stats { background:#f0eadf; border-radius:12px; }
-.browse-tools { align-items:stretch; }
-.browse-search,.browse-filter,.browse-sort { height:40px; border-radius:8px; background:#fffdfa; border-color:#ded8cd; }
-.request-cards { grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
-.request-card { display:flex; flex-direction:column; gap:0; padding:0; background:#fffdfa; border:1px solid #e8e0d5; border-radius:13px; overflow:hidden; box-shadow:0 2px 5px #26392c19; }
-.request-card-photo { width:100%; height:145px; flex:0 0 145px; border-radius:0; }
-.request-card-body { padding:12px 14px 14px; }
-.request-card-meta { justify-content:space-between; }
-.category-label { display:inline-flex; border-radius:20px; background:#eeeade; padding:5px 9px; font-size:10px; color:#33463a; }
-.request-card h2 { font-size:15px; margin:8px 0 5px; color:#202923; }
-.request-card p { font-size:11px; line-height:1.45; min-height:46px; }
-.request-card-footer { border:0; padding-top:8px; margin-top:8px; font-size:10px; }
-.button { border-radius:8px; }
-.button-primary { background:#075039; color:#fff; }
-.button-secondary { background:#f4ecdf; color:#67533c; border:1px solid #cbb99e; }
-.request-form,.form-section,.login-card,.admin-users-content,.my-repair-card,.calendar-page,.detail-content,.interests-content { background:#fffdfa; border-color:#e8e0d5; border-radius:13px; }
-.field input,.field select,.field textarea { background:#fffdfa; border-color:#ded8cd; border-radius:8px; }
-.prototype-note { color:#778078; }
-@media(max-width:900px) { .request-cards { grid-template-columns:repeat(2,minmax(0,1fr)); } .demo-landing-cards { grid-template-columns:1fr; } }
-@media(max-width:640px) {
- .demo-landing-header { height:58px; padding:0 16px; gap:14px; }
- .demo-landing-brand,.demo-landing-brand img { width:155px; }
- .demo-landing-hero { height:470px; }
- .demo-landing-hero-copy { padding:28px 22px; }
- .demo-landing-hero-copy h1 { font-size:38px; }
- .demo-landing-hero-copy p { font-size:14px; }
- .demo-landing-actions { align-items:flex-start; flex-direction:column; gap:16px; }
- .demo-landing-how { padding:20px 12px; }
- .demo-landing-cards { padding:12px 14px 28px; }
- .demo-landing-card { grid-template-columns:1fr; }
- .demo-landing-card>img { height:170px; min-height:170px; }
- .browse-header,.form-header { padding:0 16px; height:60px; }
- .browse-header nav { gap:6px; }
- .browse-header nav a:not(.button) { display:none; }
- .browse-content,.request-content { padding:24px 16px 38px; }
- .browse-title { align-items:flex-start; flex-direction:column; }
- .browse-stats { grid-template-columns:1fr; }
- .browse-stats>div { border-right:0; border-bottom:1px solid #d3dacb; padding:9px 6px; }
- .request-cards { grid-template-columns:1fr; }
- .request-card { display:flex; flex-direction:row; }
- .request-card-photo { width:112px; height:100%; min-height:150px; flex:0 0 112px; }
- .request-card-body { padding:12px; }
- .request-card p { min-height:0; }
- .request-card-footer { flex-direction:column; align-items:flex-start; }
 }
