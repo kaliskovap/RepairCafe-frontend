@@ -2477,142 +2477,89 @@ select {
   }
 }
 
-/* S14 – sjednocení vizuálního stylu podle prototypu Repair Café */
-:root {
-  --rc-green: #104b37;
-  --rc-green-hover: #17624a;
-  --rc-cream: #f7f3eb;
-  --rc-paper: #fffdfa;
-  --rc-mint: #dce8d2;
-  --rc-line: #e7e0d5;
-  --rc-muted: #788078;
-  color: #1f2924;
-  background: #e9ece8;
-}
-body { background: #e9ece8; color: #1f2924; }
-a { color: inherit; }
-.landing-header, .app-header, .form-header, .browse-header, .admin-users-header {
-  min-height: 66px; height: auto; background: var(--rc-green); color: #fff;
-  padding: 8px clamp(18px, 3vw, 42px); gap: 18px;
-}
-.brand { gap: 10px; color: #fff; font-size: 17px; white-space: nowrap; }
-.brand-mark {
-  width: 42px; height: 42px; border-radius: 9px; background: #e8eee2; color: var(--rc-green);
-  overflow: hidden; position: relative;
-}
-.brand-mark svg { width: 22px; height: 22px; }
-.landing-header nav, .browse-header nav { gap: 7px; flex-wrap: wrap; }
-.landing-header nav a, .browse-header nav a {
-  color: #e4eee8; font-size: 13px; padding: 9px 12px; border-radius: 8px;
-}
-.landing-header nav a:hover, .browse-header nav a:hover { background: #18745a; color: #fff; }
-.landing-header nav .button-light { background: #eaf0e6; color: var(--rc-green); }
-.button { border-radius: 7px; padding: 10px 15px; font-size: 13px; transition: background .15s, transform .15s; }
-.button:active { transform: translateY(1px); }
-.button-primary, .button-role { background: var(--rc-green); color: #fff; }
-.button-primary:hover, .button-role:hover { background: var(--rc-green-hover); }
-.button-secondary { background: #f5f0e7; color: #3c4b40; border: 1px solid #e3dbce; }
-.button-light { background: #f5f0e7; color: #3c4b40; }
-.button-outline { border-color: #c7d2c4; color: var(--rc-green); }
-.landing { background: var(--rc-cream); }
-.landing-refreshed .refreshed-hero { min-height: 570px; padding: 64px clamp(24px, 7vw, 100px); }
-.refreshed-hero h1 { max-width: 700px; font-size: clamp(42px, 5vw, 66px); letter-spacing: -1.5px; }
-.refreshed-hero p { font-size: 18px; max-width: 590px; }
-.intro.refreshed-intro { padding: 64px 22px 48px; }
-.intro.refreshed-intro h2, .refreshed-how h2 { color: #202923; font-size: clamp(27px, 3.3vw, 40px); }
-.refreshed-how { background: #e9eddf; }
-.home-action-card { border-radius: 13px; background: var(--rc-paper); border-color: var(--rc-line); box-shadow: 0 2px 6px #26392c12; }
-.home-action-copy h2 { color: var(--rc-green); font-size: 20px; }
-.button-home { background: var(--rc-green); color: #fff; border-radius: 7px; }
-.browse-page, .request-page, .admin-users-page { background: var(--rc-cream); min-height: 100vh; }
-.browse-content, .detail-content, .my-repairs-content, .admin-users-content {
-  max-width: 1320px; padding: 34px clamp(18px, 3vw, 42px) 58px;
-}
-.browse-title { align-items: center; margin-bottom: 20px; }
-.browse-title h1, .interests-heading h1, .my-repairs-heading h1, .calendar-heading h1, .admin-users-heading h1 {
-  color: #202923; font-size: clamp(27px, 3vw, 34px); letter-spacing: -.7px; margin: 6px 0;
-}
-.browse-title p, .interests-heading p, .my-repairs-heading p, .calendar-heading p, .admin-users-heading p { color: #68736b; font-size: 13px; }
-.eyebrow { color: #67845e; font-size: 10px; letter-spacing: 1.5px; }
-.browse-stats { background: #f0eadf; border-radius: 12px; margin: 20px 0; padding: 14px; }
-.browse-stats strong { color: var(--rc-green); }
-.browse-tools { margin: 20px 0 12px; }
-.browse-search, .browse-filter, .browse-sort, .admin-users-search {
-  min-height: 40px; height: auto; background: var(--rc-paper); border: 1px solid #ded8cd; border-radius: 8px;
-}
-.request-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
-.request-card {
-  display: flex; flex-direction: column; gap: 0; padding: 0; overflow: hidden;
-  background: var(--rc-paper); border: 1px solid var(--rc-line); border-radius: 13px;
-  box-shadow: 0 2px 5px #26392c19;
-}
-.request-card-photo { width: 100%; height: 150px; flex: 0 0 150px; border-radius: 0; }
-.request-card-icon { display: none; }
-.request-card-body { padding: 13px 14px 14px; }
-.request-card-meta { justify-content: flex-start; }
-.category-label { display: inline-flex; background: #eeeade; color: #33463a; border-radius: 20px; padding: 4px 8px; font-size: 10px; }
-.request-card h2 { font-size: 15px; margin: 8px 0 6px; color: #202923; }
-.request-card p { font-size: 12px; line-height: 1.5; color: #59635b; min-height: 54px; }
-.request-card-footer { margin-top: 12px; padding-top: 11px; border-color: #eee9df; }
-.request-card-footer a { color: var(--rc-green); }
-.status { font-size: 10px; padding: 5px 9px; font-weight: 650; }
-.status-open { background: #e5f1c8; color: #50662d; }
-.status-scheduled { background: #e3edf6; color: #496987; }
-.status-completed { background: #e3eddf; color: #3d7149; }
-.public-detail, .request-form, .login-card, .admin-users-table-wrap, .calendar-panel, .my-repair-card, .interest-card {
-  background: var(--rc-paper); border: 1px solid var(--rc-line); border-radius: 13px; box-shadow: 0 2px 5px #26392c0c;
-}
-.public-detail { padding: clamp(18px, 3vw, 30px); }
-.request-content { max-width: 1000px; padding: 34px 22px 55px; }
-.request-heading h1 { font-size: clamp(28px, 3vw, 36px); color: #202923; }
-.request-heading > p { font-size: 14px; color: #68736b; }
-.request-form { padding: clamp(20px, 3vw, 32px); }
-.form-section + .form-section { border-color: #eee9df; }
-.field, .form-section label { color: #49564d; font-size: 12px; }
-.field input, .field select, .field textarea, .form-section input, .form-section select, .form-section textarea {
-  border: 1px solid #ded9ce; border-radius: 7px; background: #fff; padding: 11px 12px; color: #25352c;
-}
-.my-repairs-content { max-width: 1120px; }
-.my-repairs-stats > div { background: #f0eadf; color: var(--rc-green); border-radius: 12px; }
-.my-repairs-tabs button.active { background: var(--rc-mint); color: var(--rc-green); }
-.my-repair-card { padding: 16px; }
-.calendar-page { background: transparent; }
-.calendar-toolbar, .calendar-panel { background: var(--rc-paper); border: 1px solid var(--rc-line); border-radius: 12px; }
-.calendar-navigation button, .calendar-modes button { border-radius: 7px; }
-.calendar-modes button.active, .calendar-navigation .calendar-today { background: var(--rc-green); color: white; }
-.calendar-event { background: #e5f1c8; color: #40572c; border-radius: 6px; }
-.admin-users-content { max-width: 1200px; }
-.admin-users-table th { background: #f0eadf; color: #526056; }
-.admin-users-table td, .admin-users-table th { border-color: #eee9df; }
-.admin-users-total { background: #f0eadf; color: var(--rc-green); border-radius: 10px; }
-.login-page { background: var(--rc-cream); }
-.login-card { border-radius: 13px; box-shadow: 0 8px 28px #24362a10; }
-.empty-results, .my-repairs-empty, .interests-empty, .calendar-empty, .admin-users-empty {
-  background: var(--rc-paper); border: 1px solid var(--rc-line); border-radius: 12px;
-}
-@media (max-width: 900px) {
-  .request-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .landing-header nav, .browse-header nav { gap: 2px; }
-  .landing-header nav a, .browse-header nav a { padding: 8px; font-size: 12px; }
-}
-@media (max-width: 680px) {
-  .landing-header, .browse-header, .form-header, .admin-users-header { padding: 8px 13px; min-height: 58px; }
-  .landing-header nav, .browse-header nav { gap: 2px; }
-  .landing-header nav a, .browse-header nav a { font-size: 10px; padding: 6px; }
-  .brand { font-size: 14px; gap: 7px; }
-  .brand-mark { width: 34px; height: 34px; }
-  .browse-content, .detail-content, .my-repairs-content, .admin-users-content { padding: 22px 13px 38px; }
-  .browse-title { align-items: flex-start; flex-direction: column; }
-  .request-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
-  .request-card-photo { height: 105px; flex-basis: 105px; }
-  .request-card-body { padding: 9px; }
-  .request-card h2 { font-size: 12px; }
-  .request-card p { font-size: 10px; min-height: 58px; }
-  .request-card-footer { align-items: flex-start; flex-direction: column; font-size: 10px; }
-  .request-content { padding: 22px 13px 38px; }
-  .my-repairs-stats { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 390px) {
-  .request-cards { grid-template-columns: 1fr; }
-  .request-card-photo { height: 160px; flex-basis: 160px; }
+/* S15 – přesné vizuální přiblížení schválenému demo prototypu */
+:root { font-family: Inter, Arial, sans-serif; color: #202923; background: #e9ece8; }
+body { background: #e9ece8; }
+.demo-landing { min-height: 100vh; background: #f8f4ec; color: #202923; }
+.demo-landing-header { height: 66px; background: #003b2a; display:flex; align-items:center; padding:0 26px; gap:22px; color:#fff; }
+.demo-landing-brand { display:flex; align-items:center; flex:0 0 auto; width:190px; height:48px; }
+.demo-landing-brand img { width:190px; height:48px; object-fit:contain; object-position:left center; }
+.demo-landing-divider { height:28px; border-left:1px solid #ffffff45; }
+.demo-landing-about { color:#e4eee8; font-size:13px; text-decoration:none; }
+.demo-landing-login { margin-left:auto; display:inline-flex; align-items:center; gap:8px; background:#eaf0e6; color:#003b2a; border-radius:7px; padding:10px 15px; font-size:12px; font-weight:700; text-decoration:none; }
+.demo-landing-hero { height:500px; position:relative; overflow:hidden; display:flex; align-items:center; background:#17241e; }
+.demo-landing-hero-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 48%; }
+.demo-landing-hero-overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(0,35,24,.82),rgba(0,35,24,.16)); }
+.demo-landing-hero-copy { position:relative; z-index:1; width:min(100%,1440px); margin:0 auto; padding:35px 7%; color:#fff; }
+.demo-landing-hero-copy h1 { max-width:700px; font-size:clamp(38px,4.5vw,62px); line-height:1.06; letter-spacing:-1.5px; margin:0 0 17px; }
+.demo-landing-hero-copy p { font-size:17px; line-height:1.55; margin:0; color:#f0f3ed; }
+.demo-landing-actions { display:flex; align-items:center; gap:24px; margin-top:27px; }
+.demo-landing-primary { min-height:44px; padding:0 18px; border-radius:8px; background:#e4f3b4; color:#203522; display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:750; text-decoration:none; }
+.demo-landing-secondary { display:inline-flex; align-items:center; gap:8px; color:#fff; font-size:13px; font-weight:600; text-decoration:none; }
+.demo-landing-how { padding:34px 26px; background:#f8f4ec; }
+.demo-landing-how img { display:block; width:min(100%,1440px); height:auto; margin:auto; }
+.demo-landing-cards { max-width:1440px; margin:0 auto; padding:18px 26px 46px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.demo-landing-card { display:grid; grid-template-columns:42% 1fr; min-height:220px; background:#fffdfa; border:1px solid #e7e0d5; border-radius:12px; overflow:hidden; }
+.demo-landing-card>img { width:100%; height:100%; min-height:220px; object-fit:cover; }
+.demo-landing-card>div { padding:22px 21px; display:flex; flex-direction:column; align-items:flex-start; }
+.demo-landing-card h2 { display:flex; align-items:center; gap:9px; color:#174632; font-size:18px; margin:0 0 10px; }
+.demo-landing-card p { color:#68736b; font-size:12px; line-height:1.55; margin:0 0 16px; }
+.demo-landing-card a { margin-top:auto; display:inline-flex; align-items:center; gap:7px; color:#075039; font-size:12px; font-weight:750; text-decoration:none; }
+.demo-landing-bottom img { display:block; width:100%; height:auto; }
+
+/* Demo uses a compact, centered work area and warm paper surfaces. */
+.browse-page,.request-page { background:#e9ece8; color:#202923; }
+.browse-header,.form-header { height:66px; background:#003b2a; color:#fff; padding:0 max(26px,calc((100vw - 1440px)/2)); }
+.browse-header .brand,.form-header .brand { color:#fff; gap:9px; }
+.browse-header .brand-mark,.form-header .brand-mark { width:32px; height:32px; border-radius:8px; background:#e8eee2; color:#003b2a; }
+.browse-header nav { gap:8px; font-size:13px; }
+.browse-header nav a:not(.button) { color:#e4eee8; padding:10px 13px; border-radius:8px; }
+.browse-header nav a:not(.button):hover { background:#18745a; color:#fff; }
+.browse-content,.request-content { max-width:1440px; padding:30px 34px 54px; }
+.browse-title h1,.request-heading h1 { color:#174632; font-size:27px; line-height:1.2; letter-spacing:-.8px; }
+.browse-title p,.request-heading p { color:#68736b; font-size:14px; }
+.browse-stats { background:#f0eadf; border-radius:12px; }
+.browse-tools { align-items:stretch; }
+.browse-search,.browse-filter,.browse-sort { height:40px; border-radius:8px; background:#fffdfa; border-color:#ded8cd; }
+.request-cards { grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+.request-card { display:flex; flex-direction:column; gap:0; padding:0; background:#fffdfa; border:1px solid #e8e0d5; border-radius:13px; overflow:hidden; box-shadow:0 2px 5px #26392c19; }
+.request-card-photo { width:100%; height:145px; flex:0 0 145px; border-radius:0; }
+.request-card-body { padding:12px 14px 14px; }
+.request-card-meta { justify-content:space-between; }
+.category-label { display:inline-flex; border-radius:20px; background:#eeeade; padding:5px 9px; font-size:10px; color:#33463a; }
+.request-card h2 { font-size:15px; margin:8px 0 5px; color:#202923; }
+.request-card p { font-size:11px; line-height:1.45; min-height:46px; }
+.request-card-footer { border:0; padding-top:8px; margin-top:8px; font-size:10px; }
+.button { border-radius:8px; }
+.button-primary { background:#075039; color:#fff; }
+.button-secondary { background:#f4ecdf; color:#67533c; border:1px solid #cbb99e; }
+.request-form,.form-section,.login-card,.admin-users-content,.my-repair-card,.calendar-page,.detail-content,.interests-content { background:#fffdfa; border-color:#e8e0d5; border-radius:13px; }
+.field input,.field select,.field textarea { background:#fffdfa; border-color:#ded8cd; border-radius:8px; }
+.prototype-note { color:#778078; }
+@media(max-width:900px) { .request-cards { grid-template-columns:repeat(2,minmax(0,1fr)); } .demo-landing-cards { grid-template-columns:1fr; } }
+@media(max-width:640px) {
+ .demo-landing-header { height:58px; padding:0 16px; gap:14px; }
+ .demo-landing-brand,.demo-landing-brand img { width:155px; }
+ .demo-landing-hero { height:470px; }
+ .demo-landing-hero-copy { padding:28px 22px; }
+ .demo-landing-hero-copy h1 { font-size:38px; }
+ .demo-landing-hero-copy p { font-size:14px; }
+ .demo-landing-actions { align-items:flex-start; flex-direction:column; gap:16px; }
+ .demo-landing-how { padding:20px 12px; }
+ .demo-landing-cards { padding:12px 14px 28px; }
+ .demo-landing-card { grid-template-columns:1fr; }
+ .demo-landing-card>img { height:170px; min-height:170px; }
+ .browse-header,.form-header { padding:0 16px; height:60px; }
+ .browse-header nav { gap:6px; }
+ .browse-header nav a:not(.button) { display:none; }
+ .browse-content,.request-content { padding:24px 16px 38px; }
+ .browse-title { align-items:flex-start; flex-direction:column; }
+ .browse-stats { grid-template-columns:1fr; }
+ .browse-stats>div { border-right:0; border-bottom:1px solid #d3dacb; padding:9px 6px; }
+ .request-cards { grid-template-columns:1fr; }
+ .request-card { display:flex; flex-direction:row; }
+ .request-card-photo { width:112px; height:100%; min-height:150px; flex:0 0 112px; }
+ .request-card-body { padding:12px; }
+ .request-card p { min-height:0; }
+ .request-card-footer { flex-direction:column; align-items:flex-start; }
 }
