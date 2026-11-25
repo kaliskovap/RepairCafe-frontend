@@ -1,0 +1,242 @@
+/* Repair Café – převod vizuálního systému z finálního dema do produkčního FE.
+   Neobsahuje demonstrační stav ani demonstrační data. */
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #202923;
+  background: #e9ece8;
+  --green: #003b2a;
+  --green2: #075039;
+  --mint: #dce8d2;
+  --cream: #f8f4ec;
+  --paper: #fffdfa;
+  --line: #e7e0d5;
+  --muted: #778078;
+  --red: #c94737;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+html { scroll-behavior: smooth; }
+body { min-width: 320px; background: #e9ece8; color: #202923; }
+button,input,select,textarea { font: inherit; }
+
+/* Common shell and navigation – same green bar and proportions as the demo. */
+.landing-header,.browse-header,.admin-users-header,.form-header {
+  min-height: 66px; height: 66px; background: var(--green); color: #fff;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:0 max(24px,calc((100vw - 1440px)/2)); border:0; box-shadow:none;
+}
+.brand { display:flex; align-items:center; gap:0; flex:0 0 auto; color:#fff; }
+.brand-mark { width:190px; height:48px; border-radius:0; background:transparent url('./assets/repair-cafe-logo.png') left center / contain no-repeat; color:transparent; display:block; }
+.brand-mark svg,.brand b { display:none !important; }
+.landing-header nav,.browse-header nav { display:flex; align-items:center; justify-content:flex-end; gap:7px; height:100%; flex-wrap:wrap; }
+.landing-header nav a,.browse-header nav a,.admin-back-link,.header-back {
+  color:#e4eee8; font-size:13px; font-weight:500; padding:10px 13px; border-radius:8px;
+  display:inline-flex; align-items:center; gap:8px; text-decoration:none; white-space:nowrap;
+}
+.landing-header nav a:hover,.browse-header nav a:hover,.admin-back-link:hover,.header-back:hover { background:#18745a; color:#fff; }
+.landing-header nav .button,.browse-header nav .button { background:#eaf0e6; color:var(--green); border:0; min-height:38px; }
+.landing-header nav .button:hover,.browse-header nav .button:hover { background:#dce8d2; }
+
+/* Page canvas and headings */
+.landing,.browse-page,.request-page,.admin-users-page { min-height:100vh; background:var(--cream); color:#202923; }
+.browse-content,.my-repairs-content,.interests-content,.admin-users-content,.request-content,.calendar-page {
+  width:100%; max-width:1440px; margin:0 auto; padding:30px 34px 54px;
+}
+.browse-title,.my-repairs-heading,.interests-heading,.admin-users-heading,.request-heading,.calendar-heading {
+  display:flex; align-items:center; justify-content:space-between; gap:18px; margin:0 0 23px;
+}
+.browse-title h1,.my-repairs-heading h1,.interests-heading h1,.admin-users-heading h1,.request-heading h1,.calendar-heading h1 {
+  color:#174632; font-size:27px; line-height:1.2; letter-spacing:-.8px; font-weight:750; margin:0;
+}
+.browse-title p,.my-repairs-heading p,.interests-heading p,.admin-users-heading p,.request-heading p,.calendar-heading p {
+  color:#68736b; font-size:14px; line-height:1.55; margin:6px 0 0;
+}
+.eyebrow { color:#67845e; font-size:10px; font-weight:800; letter-spacing:1.7px; margin-bottom:7px; }
+
+/* Buttons and fields */
+.button,.btn-primary,.btn-light,.btn-outline,.request-submit {
+  min-height:42px; padding:0 17px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
+  gap:9px; font-size:13px; font-weight:700; text-decoration:none; transition:background .15s,border-color .15s;
+}
+.button-primary,.btn-primary,.request-submit { background:var(--green2); color:#fff; border:1px solid var(--green2); }
+.button-primary:hover,.btn-primary:hover,.request-submit:hover { background:#0b6548; }
+.button-light,.btn-light { background:#f4ecdf; color:#67533c; border:1px solid #cbb99e; }
+.button-outline,.btn-outline,.button-secondary { background:var(--paper); color:#174632; border:1px solid #c9d4c9; }
+.button-home { background:var(--green2); color:#fff; border:1px solid var(--green2); }
+.button-role { background:var(--green2); color:#fff; border:1px solid var(--green2); }
+.field { display:grid; gap:8px; color:#29352e; font-size:13px; font-weight:650; }
+.field input,.field select,.field textarea,.browse-search input,.browse-filter select,.browse-sort select,.admin-users-search input {
+  width:100%; min-height:43px; border:1px solid #ded8cd; border-radius:8px; background:var(--paper);
+  color:#29352e; padding:10px 12px; outline:none; font-size:13px;
+}
+.field input:focus,.field select:focus,.field textarea:focus,.browse-search:focus-within,.admin-users-search:focus-within { border-color:#789777; box-shadow:0 0 0 3px #dce8d277; }
+
+/* Request listing: demo's warm paper cards, photo header and compact metadata. */
+.browse-stats,.my-repairs-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:0 0 20px; }
+.browse-stats>div,.my-repairs-stats>div { background:#f0eadf; border-radius:11px; padding:15px 18px; display:grid; gap:4px; }
+.browse-stats strong,.my-repairs-stats strong { color:#174632; font-size:21px; }
+.browse-stats span,.my-repairs-stats span { color:#68736b; font-size:11px; }
+.browse-tools { display:flex; align-items:center; gap:10px; padding:13px; background:#f0eadf; border-radius:13px; margin-bottom:13px; }
+.browse-search,.browse-filter,.browse-sort,.admin-users-search { min-height:40px; display:flex; align-items:center; gap:9px; padding:0 11px; background:var(--paper); border:1px solid #ded8cd; border-radius:8px; color:#49584d; }
+.browse-search { flex:1; min-width:180px; }
+.browse-search input,.admin-users-search input { border:0; background:transparent; min-width:0; box-shadow:none; }
+.browse-filter select,.browse-sort select { border:0; min-height:36px; padding:4px 6px; background:transparent; width:auto; }
+.browse-sort { font-size:11px; white-space:nowrap; }
+.browse-result-count { color:#778078; font-size:11px; margin:0 0 12px; }
+.request-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+.request-card { min-width:0; background:var(--paper); border:1px solid #e8e0d5; border-radius:13px; overflow:hidden; box-shadow:0 2px 5px #26392c19; }
+.request-card-photo { height:145px; background:#e7e2d7; overflow:hidden; }
+.request-card-photo img { display:block; width:100%; height:100%; object-fit:cover; }
+.request-card-body { padding:12px 14px 14px; }
+.request-card-meta { display:flex; align-items:center; justify-content:space-between; gap:7px; margin-bottom:8px; }
+.category-label { display:inline-flex; border-radius:20px; background:#eeeade; padding:5px 9px; color:#33463a; font-size:10px; }
+.status { display:inline-flex; border-radius:20px; padding:6px 11px; font-size:10px; font-weight:650; }
+.status-open { background:#f4ead3; color:#7b6335; }
+.status-selected,.status-planned { background:#e1edf7; color:#37678c; }
+.status-done { background:#e4eedc; color:#4d713f; }
+.request-card h2 { color:#202923; font-size:15px; margin:8px 0 5px; font-weight:750; }
+.request-card p { color:#68736b; font-size:11px; line-height:1.45; margin:0 0 11px; min-height:46px; }
+.request-card-footer { display:flex; align-items:center; justify-content:space-between; gap:8px; border-top:1px solid #eee8df; padding-top:10px; color:#7a8179; font-size:9px; }
+.request-card-footer a { color:#075039; font-size:11px; font-weight:700; white-space:nowrap; }
+.empty-results,.my-repairs-empty,.interests-empty,.admin-users-empty,.calendar-empty,.calendar-state,.my-repairs-state,.interests-state {
+  text-align:center; padding:48px 20px; background:var(--paper); border:1px solid var(--line); border-radius:12px; color:#68736b;
+}
+.prototype-note { color:#8a918a; font-size:10px; line-height:1.5; margin-top:20px; }
+
+/* Repair detail, interest selection and volunteer lists */
+.detail-content,.public-detail,.interests-content,.my-repairs-list,.repairs-calendar { color:#202923; }
+.detail-back,.backlink { color:#174632; font-size:12px; font-weight:650; text-decoration:none; }
+.detail-topline { margin:12px 0 18px; }
+.detail-description,.detail-info,.interest-area,.interest-card,.my-repair-card,.interests-summary,.selected-volunteer-banner {
+  background:var(--paper); border:1px solid #e8e0d5; border-radius:13px; box-shadow:0 2px 5px #26392c0c;
+}
+.detail-description,.detail-info,.interest-area { padding:22px; }
+.request-detail-photo { width:100%; max-height:420px; object-fit:cover; border-radius:12px; background:#e7e2d7; }
+.contact-protection,.interest-success,.selected-volunteer-banner { background:#e8f1df; color:#446b39; border-radius:10px; padding:14px; }
+.interest-card { padding:17px; }
+.interest-list { display:grid; gap:12px; }
+.interest-card-top,.interest-card-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.interest-card-main { display:flex; align-items:flex-start; gap:13px; }
+.interest-avatar { width:42px; height:42px; flex:0 0 auto; border-radius:50%; background:#dce8d2; color:#174632; display:grid; place-items:center; font-weight:800; }
+.interests-summary { display:flex; align-items:center; gap:12px; padding:16px 20px; margin:16px 0; }
+
+/* My repairs and calendar */
+.my-repairs-tabs,.calendar-modes { display:flex; gap:5px; flex-wrap:wrap; }
+.my-repairs-tabs button,.calendar-modes button { border:0; background:transparent; border-radius:7px; padding:10px 13px; font-size:12px; color:#536057; }
+.my-repairs-tabs button.active,.calendar-modes button.active { background:var(--mint); color:#214832; font-weight:700; }
+.my-repairs-list { display:grid; gap:11px; }
+.my-repair-card { display:flex; align-items:center; gap:17px; padding:13px 16px; }
+.my-repair-main { display:grid; gap:5px; flex:1; min-width:0; }
+.my-repair-meta,.my-repair-footer { color:#6f796f; font-size:11px; }
+.calendar-toolbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:15px; background:#f0eadf; border-radius:13px; }
+.calendar-navigation { display:flex; gap:8px; align-items:center; }
+.calendar-navigation button { border:1px solid #ded8cd; background:var(--paper); border-radius:8px; padding:8px 11px; color:#174632; }
+.calendar-legend { display:flex; gap:16px; flex-wrap:wrap; color:#68736b; font-size:11px; margin:14px 0; }
+.calendar-event { background:#e1edf7; color:#37678c; border-radius:6px; padding:5px 7px; font-size:10px; }
+
+/* Create request and login */
+.request-heading { max-width:780px; margin:12px auto 24px; }
+.request-form { max-width:900px; margin:0 auto; background:var(--paper); border:1px solid #e8e0d5; border-radius:13px; padding:28px 32px; box-shadow:0 2px 5px #26392c13; }
+.form-section { padding:0 0 22px; margin:0 0 22px; border-bottom:1px solid #eee8df; }
+.form-section-title { display:flex; align-items:flex-start; gap:14px; margin-bottom:20px; }
+.form-section-title>span { width:34px; height:34px; border-radius:9px; display:grid; place-items:center; background:var(--mint); color:#174632; font-weight:800; }
+.form-section-title h2 { margin:0; color:#174632; font-size:18px; }
+.form-section-title p { margin:5px 0 0; color:#778078; font-size:12px; }
+.upload-box { border:1px dashed #b8b09f; border-radius:9px; background:#faf7f0; padding:24px; color:#174632; }
+.form-privacy { background:#f0eadf; border-radius:9px; padding:13px; color:#59675c; font-size:12px; }
+.success-card,.login-card { background:var(--paper); border:1px solid #e8e0d5; border-radius:16px; box-shadow:0 10px 30px #26392c12; }
+.success-card { max-width:700px; margin:70px auto; padding:42px; text-align:center; }
+.login-page { min-height:100vh; background:var(--cream); padding:34px 20px; display:grid; place-items:center; }
+.login-card { width:min(100%,480px); padding:36px; text-align:center; }
+.login-card .brand-mark { margin:0 auto 16px; width:190px; }
+.login-card h1 { color:#174632; font-size:27px; }
+.login-card p { color:#68736b; font-size:13px; line-height:1.6; }
+.login-security { display:flex; align-items:flex-start; gap:9px; text-align:left; background:#e8f1df; padding:13px; border-radius:9px; color:#446b39; font-size:11px; }
+
+/* Admin user list */
+.admin-users-content { max-width:1240px; }
+.admin-users-search { width:100%; max-width:540px; margin:18px 0; }
+.admin-users-table-wrap { background:var(--paper); border:1px solid var(--line); border-radius:13px; overflow:auto; }
+.admin-users-table { width:100%; border-collapse:collapse; font-size:12px; }
+.admin-users-table th { background:#f0eadf; color:#536057; text-align:left; font-size:10px; letter-spacing:.05em; }
+.admin-users-table th,.admin-users-table td { padding:14px 16px; border-bottom:1px solid #eee8df; }
+.admin-user-role { display:inline-flex; padding:5px 9px; border-radius:20px; background:var(--mint); color:#214832; font-size:10px; }
+.admin-user-avatar { width:32px; height:32px; display:inline-grid; place-items:center; border-radius:50%; background:var(--mint); color:#174632; }
+.admin-user-identity { display:flex; align-items:center; gap:10px; }
+.admin-user-identity img { width:32px; height:32px; border-radius:50%; object-fit:cover; }
+
+/* Landing page uses the same exact imagery and palette as the demo. */
+.landing-refreshed { background:var(--cream); }
+.refreshed-hero { min-height:560px; height:560px; padding:0 clamp(24px,7vw,110px); background-position:center; background-size:cover; }
+.refreshed-hero .hero-copy { max-width:650px; }
+.refreshed-hero h1 { font-size:clamp(42px,5vw,64px); line-height:1.04; letter-spacing:-1.6px; }
+.refreshed-hero p { font-size:17px; line-height:1.55; max-width:560px; }
+.refreshed-hero .eyebrow { color:#dce8d2; }
+.refreshed-hero .button-primary { background:#dce8d2; border-color:#dce8d2; color:var(--green); }
+.refreshed-hero .button-outline { color:#fff; border-color:#ffffffa6; background:#ffffff12; }
+.refreshed-intro { max-width:900px; padding:54px 22px 40px; }
+.refreshed-intro h2,.refreshed-how h2 { color:#174632; font-size:clamp(28px,3.5vw,40px); letter-spacing:-.8px; }
+.refreshed-intro p { color:#68736b; font-size:15px; }
+.intro-values { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:24px; color:#315641; font-size:12px; }
+.intro-values span { display:flex; align-items:center; gap:8px; }
+.home-action-cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; max-width:1280px; margin:0 auto; padding:10px 34px 36px; }
+.home-action-card { display:grid; grid-template-columns:42% 1fr; background:var(--paper); border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 3px 10px #26392c0d; }
+.home-action-image img { display:block; width:100%; height:100%; min-height:230px; object-fit:cover; }
+.home-action-copy { padding:24px; align-self:center; }
+.home-action-copy h2 { display:flex; align-items:center; gap:9px; color:#174632; font-size:18px; margin:0 0 10px; }
+.home-action-copy p { color:#68736b; font-size:12px; line-height:1.55; }
+.refreshed-how { background:#e9eddf; padding:40px clamp(22px,7vw,100px); text-align:center; }
+.workflow-image { width:100%; max-width:1120px; display:block; margin:24px auto 0; border-radius:13px; }
+.home-bottom-banner { min-height:220px; background-size:cover; background-position:center; display:flex; align-items:center; padding:35px clamp(24px,7vw,100px); color:white; }
+.home-bottom-banner h2 { font-size:30px; margin:8px 0 18px; }
+.landing footer,.request-footer { text-align:center; padding:25px; color:#778078; font-size:11px; background:var(--cream); }
+
+@media(max-width:1000px) {
+ .landing-header,.browse-header,.admin-users-header,.form-header { padding:0 18px; }
+ .landing-header nav,.browse-header nav { gap:2px; }
+ .landing-header nav a,.browse-header nav a { padding:8px; font-size:11px; }
+ .request-cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .home-action-cards { padding-left:18px; padding-right:18px; }
+}
+@media(max-width:700px) {
+ .landing-header,.browse-header,.admin-users-header,.form-header { height:auto; min-height:60px; padding:6px 12px; gap:8px; }
+ .brand-mark { width:145px; height:42px; }
+ .landing-header nav,.browse-header nav { gap:2px; }
+ .landing-header nav a,.browse-header nav a { font-size:10px; padding:7px 6px; }
+ .browse-content,.my-repairs-content,.interests-content,.admin-users-content,.request-content,.calendar-page { padding:18px 12px 30px; }
+ .browse-title,.my-repairs-heading,.interests-heading,.admin-users-heading,.request-heading,.calendar-heading { align-items:flex-start; flex-direction:column; }
+ .browse-title h1,.my-repairs-heading h1,.interests-heading h1,.admin-users-heading h1,.request-heading h1,.calendar-heading h1 { font-size:23px; }
+ .browse-stats,.my-repairs-stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .browse-tools { flex-wrap:wrap; padding:9px; }
+ .browse-search { flex:1 1 100%; }
+ .browse-filter,.browse-sort { flex:1; min-width:0; }
+ .browse-filter select,.browse-sort select { max-width:100%; }
+ .request-cards { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+ .request-card-photo { height:105px; }
+ .request-card-body { padding:8px; }
+ .request-card h2 { font-size:11px; }
+ .request-card p { font-size:9px; min-height:46px; }
+ .request-card-footer { display:block; font-size:8px; }
+ .request-card-footer a { display:block; margin-top:7px; }
+ .home-action-cards { grid-template-columns:1fr; gap:10px; padding:0 10px 14px; }
+ .home-action-card { grid-template-columns:40% 1fr; }
+ .home-action-image img { min-height:145px; }
+ .home-action-copy { padding:10px; }
+ .home-action-copy h2 { font-size:12px; }
+ .home-action-copy p { font-size:9px; }
+ .home-action-copy .button { font-size:9px; min-height:30px; padding:0 8px; }
+ .refreshed-hero { height:500px; min-height:0; padding:0 18px; background-position:62% center; }
+ .refreshed-hero h1 { font-size:34px; }
+ .refreshed-hero p { font-size:16px; }
+ .refreshed-hero .hero-actions { flex-direction:column; align-items:stretch; max-width:270px; }
+ .refreshed-intro { padding:30px 16px; }
+ .refreshed-how { padding:22px 10px; }
+ .workflow-image { border-radius:12px; }
+ .home-bottom-banner { min-height:180px; padding:20px 15px; }
+ .home-bottom-banner h2 { font-size:22px; }
+ .request-form { padding:16px; }
+ .login-card { padding:24px 18px; }
+ .my-repair-card { flex-wrap:wrap; padding:10px; }
+ .calendar-toolbar { flex-wrap:wrap; }
+ .admin-users-table th,.admin-users-table td { padding:10px 7px; font-size:10px; }
+}
